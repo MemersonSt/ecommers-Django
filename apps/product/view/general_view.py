@@ -1,9 +1,15 @@
-from apps.product.models import MeasureUnit, Indicador, CategoryProduct
 from apps.product.serializadores.general_serializers import MeasureUnitSerializer, IndicadorSerializer, CategoryProductSerializer
-from rest_framework import generics
+from rest_framework import viewsets
 
 # Utilizamos una clase para mostrar el listado categorias
-class MeasureUnitListAPIView(generics.ListAPIView):
+class MeasureUnitListAPIView(viewsets.ModelViewSet):
     serializer_class = MeasureUnitSerializer
-    def get_queryset(self):
-        return MeasureUnit.objects.filter(state = True)
+    queryset = MeasureUnitSerializer.Meta.model.objects.filter(state=True)
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    serializer_class = CategoryProductSerializer
+    queryset = CategoryProductSerializer.Meta.model.objects.filter(state=True)
+
+class IndicadorViewSet(viewsets.ModelViewSet):
+    serializer_class = IndicadorSerializer
+    queryset = IndicadorSerializer.Meta.model.objects.filter(state=True)

@@ -5,11 +5,9 @@ from django.utils import timezone
 class BaseModel(models.Model):
     id = models.AutoField(primary_key = True)
     state = models.BooleanField('Estado', default=True)
-    #create_date = models.DateField(auto_now_add=True, default=timezone.now)
-    create_date = models.DateTimeField('Fecha de creación', auto_now=True, auto_now_add=False)
+    create_date = models.DateTimeField('Fecha de creación', auto_now=False, auto_now_add=True)
     modified_date = models.DateField('Fecha de modificación', auto_now=True, auto_now_add=False)
     delete_date = models.DateField('Fecha de eliminación', auto_now=True, auto_now_add=False)
-
 
 
     class Meta:
