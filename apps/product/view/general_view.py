@@ -2,7 +2,7 @@ from apps.product.serializadores.general_serializers import MeasureUnitSerialize
 from rest_framework import viewsets
 
 # Utilizamos una clase para mostrar el listado categorias
-class MeasureUnitListAPIView(viewsets.ModelViewSet):
+class MeasureUnitViewSet(viewsets.ModelViewSet):
     serializer_class = MeasureUnitSerializer
     queryset = MeasureUnitSerializer.Meta.model.objects.filter(state=True)
 
